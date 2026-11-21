@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- iOS 27 System Colors -->
+    <color name="ios_bg">#F2F2F7</color>
+    <color name="ios_card">#FFFFFF</color>
+    <color name="ios_border">#E5E5EA</color>
+    <color name="ios_island">#0B0B0E</color>
+    <color name="ios_island_sub">#1C1C1E</color>
+    <color name="ios_blue">#007AFF</color>
+    <color name="ios_blue_light">#E5F2FF</color>
+    <color name="ios_purple">#5856D6</color>
+    <color name="ios_gold">#FF9F0A</color>
+    <color name="ios_gold_light">#FFF4E5</color>
+    <color name="ios_text_primary">#000000</color>
+    <color name="ios_text_secondary">#636366</color>
+    <color name="ios_text_tertiary">#8E8E93</color>
+    <color name="ios_input_bg">#FFFFFF</color>
+    <color name="ios_pill_bg">#E5E5EA</color>
+
+    <!-- Legacy / Compatibility Tokens -->
+    <color name="primary_navy">#0B0B0E</color>
+    <color name="primary_navy_light">#1C1C1E</color>
+    <color name="primary_navy_variant">#000000</color>
+    <color name="legal_gold">#FF9F0A</color>
+    <color name="legal_gold_light">#FFF4E5</color>
+    <color name="legal_gold_dark">#D48806</color>
+    <color name="accent_blue">#007AFF</color>
+    <color name="accent_blue_light">#E5F2FF</color>
+    <color name="surface_bg">#F2F2F7</color>
+    <color name="surface_card">#FFFFFF</color>
+    <color name="surface_stroke">#E5E5EA</color>
+    <color name="text_primary">#000000</color>
+    <color name="text_secondary">#636366</color>
+    <color name="text_tertiary">#8E8E93</color>
+    <color name="text_white">#FFFFFF</color>
+    <color name="user_bubble">#007AFF</color>
+    <color name="user_text">#FFFFFF</color>
+    <color name="assistant_bubble">#FFFFFF</color>
+    <color name="assistant_text">#000000</color>
+    <color name="citation_tag_bg">#FFF4E5</color>
+    <color name="citation_tag_text">#B25E02</color>
+    <color name="statute_tag_bg">#E5F2FF</color>
+    <color name="statute_tag_text">#0056B3</color>
+    <color name="disclaimer_bg">#FFFFFF</color>
+    <color name="disclaimer_border">#E5E5EA</color>
+    <color name="disclaimer_text">#636366</color>
+    <color name="success_green">#34C759</color>
+    <color name="error_red">#FF3B30</color>
+    <color name="chip_bg">#E5E5EA</color>
+</resources>

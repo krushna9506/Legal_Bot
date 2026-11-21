@@ -1,0 +1,32 @@
+*.iml
+.gradle
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/gradle.xml
+.idea/assetWizardSettings.xml
+.idea/dictionaries
+.idea/libraries
+.idea/shelf
+.idea/caches
+.idea/modules.xml
+.idea/navCompiler.xml
+*.kt.shebang
+
+# Android Studio generated files
+/app/build/
+
+# Signing files
+*.jks
+*.keystore
+*.pepk
+
+# Miscellaneous
+.DS_Store
+
+# Agent Artifacts
+.artifacts/

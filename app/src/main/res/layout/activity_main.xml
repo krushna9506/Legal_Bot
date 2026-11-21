@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ios_bg">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/ios_bg"
+        app:elevation="0dp">
+
+        <!-- Official iOS Navigation Bar -->
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/ios_card"
+            app:contentInsetStart="0dp"
+            app:contentInsetEnd="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="16dp">
+
+                <!-- iOS App Avatar / Logo -->
+                <ImageView
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    android:background="@drawable/bg_ios_pill"
+                    android:backgroundTint="@color/ios_blue_light"
+                    android:contentDescription="@string/app_name"
+                    android:padding="7dp"
+                    android:src="@drawable/ic_balance_scale"
+                    app:tint="@color/ios_blue" />
+
+                <!-- iOS Center/Left Title & Model Status -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:letterSpacing="-0.01"
+                        android:text="LegalBot"
+                        android:textColor="@color/ios_text_primary"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvModelStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:ellipsize="end"
+                        android:focusable="true"
+                        android:fontFamily="sans-serif"
+                        android:maxLines="1"
+                        android:text="Gemini 2.0 Flash • BNS/IPC"
+                        android:textColor="@color/ios_text_secondary"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <!-- iOS Action: Model & Key Selector -->
+                <ImageButton
+                    android:id="@+id/btnModelSelector"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    android:layout_marginEnd="6dp"
+                    android:background="@drawable/bg_ios_pill"
+                    android:contentDescription="Select AI Model and API Key"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_settings"
+                    app:tint="@color/ios_blue" />
+
+                <!-- iOS Action: Clear Chat -->
+                <ImageButton
+                    android:id="@+id/btnClearChat"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    android:background="@drawable/bg_ios_pill"
+                    android:contentDescription="@string/action_clear_chat"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_close"
+                    app:tint="@color/ios_text_secondary" />
+
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+        <!-- iOS Hairline Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.6dp"
+            android:background="@color/ios_border" />
+
+        <!-- Legal Ethics Disclaimer Banner -->
+        <LinearLayout
+            android:id="@+id/disclaimerBanner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="4dp"
+            android:background="@drawable/bg_ios_bubble_assistant"
+            android:orientation="horizontal"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="8dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif"
+                android:lineSpacingMultiplier="1.15"
+                android:text="@string/legal_disclaimer"
+                android:textColor="@color/disclaimer_text"
+                android:textSize="10.5sp" />
+
+            <ImageView
+                android:id="@+id/btnCloseDisclaimer"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="8dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Dismiss"
+                android:src="@drawable/ic_close"
+                app:tint="@color/ios_text_tertiary" />
+        </LinearLayout>
+
+        <!-- Quick Action Chips (iOS Segmented Style) -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="4dp"
+            android:scrollbars="none">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:singleLine="true">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipBnsIpc"
+                    style="@style/Widget.Material3.Chip.Assist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/chip_bns_ipc"
+                    android:textColor="@color/ios_text_primary"
+                    app:chipBackgroundColor="@color/ios_card"
+                    app:chipStrokeColor="@color/ios_border"
+                    app:chipStrokeWidth="1dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipBail"
+                    style="@style/Widget.Material3.Chip.Assist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/chip_bail_rights"
+                    android:textColor="@color/ios_text_primary"
+                    app:chipBackgroundColor="@color/ios_card"
+                    app:chipStrokeColor="@color/ios_border"
+                    app:chipStrokeWidth="1dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipNotice"
+                    style="@style/Widget.Material3.Chip.Assist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/chip_notice_drafter"
+                    android:textColor="@color/ios_text_primary"
+                    app:chipBackgroundColor="@color/ios_card"
+                    app:chipStrokeColor="@color/ios_border"
+                    app:chipStrokeWidth="1dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipAudit"
+                    style="@style/Widget.Material3.Chip.Assist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/chip_contract_audit"
+                    android:textColor="@color/ios_text_primary"
+                    app:chipBackgroundColor="@color/ios_card"
+                    app:chipStrokeColor="@color/ios_border"
+                    app:chipStrokeWidth="1dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipVoice"
+                    style="@style/Widget.Material3.Chip.Assist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/chip_voice_mode"
+                    android:textColor="@color/ios_text_primary"
+                    app:chipBackgroundColor="@color/ios_card"
+                    app:chipStrokeColor="@color/ios_border"
+                    app:chipStrokeWidth="1dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipDashboard"
+                    style="@style/Widget.Material3.Chip.Assist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="📊 Workspace"
+                    android:textColor="@color/text_white"
+                    app:chipBackgroundColor="@color/ios_blue"
+                    app:chipStrokeColor="@color/ios_blue"
+                    app:chipStrokeWidth="1dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipNotes"
+                    style="@style/Widget.Material3.Chip.Assist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="📝 Case Notes"
+                    android:textColor="@color/ios_text_primary"
+                    app:chipBackgroundColor="@color/ios_card"
+                    app:chipStrokeColor="@color/ios_border"
+                    app:chipStrokeWidth="1dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipTasks"
+                    style="@style/Widget.Material3.Chip.Assist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="⏰ Deadlines"
+                    android:textColor="@color/ios_text_primary"
+                    app:chipBackgroundColor="@color/ios_card"
+                    app:chipStrokeColor="@color/ios_border"
+                    app:chipStrokeWidth="1dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipModel"
+                    style="@style/Widget.Material3.Chip.Assist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🤖 Switch Engine"
+                    android:textColor="@color/ios_blue"
+                    app:chipBackgroundColor="@color/ios_card"
+                    app:chipStrokeColor="@color/ios_border"
+                    app:chipStrokeWidth="1dp" />
+
+            </com.google.android.material.chip.ChipGroup>
+        </HorizontalScrollView>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <!-- iOS Empty State / Welcome Screen -->
+        <LinearLayout
+            android:id="@+id/layoutEmptyState"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="28dp"
+            app:layout_constraintBottom_toTopOf="@id/attachmentBar"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <FrameLayout
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/bg_ios_dock"
+                android:padding="16dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/ic_balance_scale"
+                    app:tint="@color/ios_blue" />
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="sans-serif-medium"
+                android:letterSpacing="-0.02"
+                android:text="LegalBot AI Intelligence"
+                android:textColor="@color/ios_text_primary"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:lineSpacingMultiplier="1.2"
+                android:text="Strictly restricted to Indian Law &amp; Legal Drafting • Grounded analysis across BNS 2023, BNSS, BSA, IPC &amp; CrPC with verifiable citations."
+                android:textColor="@color/ios_text_secondary"
+                android:textSize="13.5sp" />
+
+            <TextView
+                android:id="@+id/tvQuickKeyHint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bg_ios_dock"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="9dp"
+                android:text="🤖 Switch Model &amp; Use Custom API Key ➔"
+                android:textColor="@color/ios_blue"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <!-- Chat RecyclerView -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/chatRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:clipToPadding="false"
+            android:paddingHorizontal="12dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/attachmentBar"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/item_message_assistant" />
+
+        <!-- Attachment Preview Bar (Floating iOS Pill) -->
+        <LinearLayout
+            android:id="@+id/attachmentBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginBottom="6dp"
+            android:background="@drawable/bg_ios_dock"
+            android:elevation="4dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="14dp"
+            android:paddingVertical="8dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/progressBarLoading"
+            tools:visibility="visible">
+
+            <ImageView
+                android:id="@+id/ivAttachmentPreview"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@drawable/bg_ios_bubble_assistant"
+                android:contentDescription="Attached Document"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_document" />
+
+            <TextView
+                android:id="@+id/tvAttachmentName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                android:ellipsize="middle"
+                android:fontFamily="sans-serif-medium"
+                android:maxLines="1"
+                android:text="document.pdf"
+                android:textColor="@color/ios_text_primary"
+                android:textSize="13sp" />
+
+            <ImageButton
+                android:id="@+id/btnRemoveAttachment"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Remove Attachment"
+                android:src="@drawable/ic_close"
+                app:tint="@color/ios_text_tertiary" />
+        </LinearLayout>
+
+        <!-- Loading Progress Bar -->
+        <ProgressBar
+            android:id="@+id/progressBarLoading"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/ios_blue"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/inputCard" />
+
+        <!-- iOS 27 Floating Input Dock -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/inputCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginBottom="12dp"
+            app:cardBackgroundColor="@color/ios_card"
+            app:cardCornerRadius="28dp"
+            app:cardElevation="6dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="6dp"
+                android:paddingVertical="4dp">
+
+                <!-- Camera Action -->
+                <ImageButton
+                    android:id="@+id/btnCamera"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/action_camera"
+                    android:padding="6dp"
+                    android:src="@drawable/ic_camera"
+                    app:tint="@color/ios_text_secondary" />
+
+                <!-- Document / Image Attach Action -->
+                <ImageButton
+                    android:id="@+id/btnAttach"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/action_gallery"
+                    android:padding="6dp"
+                    android:src="@drawable/ic_attach"
+                    app:tint="@color/ios_text_secondary" />
+
+                <!-- Message Input -->
+                <EditText
+                    android:id="@+id/etMessage"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="4dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="@string/hint_ask_legal"
+                    android:imeOptions="actionSend"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:maxLines="4"
+                    android:minLines="1"
+                    android:padding="8dp"
+                    android:textColor="@color/ios_text_primary"
+                    android:textColorHint="@color/ios_text_tertiary"
+                    android:textSize="14.5sp" />
+
+                <!-- Voice Dictation -->
+                <ImageButton
+                    android:id="@+id/btnMic"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Voice Assistant"
+                    android:padding="6dp"
+                    android:src="@drawable/ic_mic"
+                    app:tint="@color/ios_blue" />
+
+                <!-- iOS Circular Send Button -->
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/btnSend"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="2dp"
+                    android:contentDescription="Send"
+                    android:src="@drawable/ic_ios_arrow_up"
+                    app:backgroundTint="@color/ios_blue"
+                    app:elevation="0dp"
+                    app:fabCustomSize="36dp"
+                    app:tint="@color/text_white" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">LegalBot</string>
+    <string name="legal_disclaimer">Legal Disclaimer: NyayaAI provides legal information and research assistance under Indian Law (BNS, BNSS, BSA, IPC, CrPC). It does not constitute formal legal counsel or advocate-client representation under the Advocates Act, 1961.</string>
+    <string name="hint_ask_legal">Ask a legal question or cite a statute (e.g. BNS 103, Bail provisions)...</string>
+    <string name="chip_bns_ipc">BNS / IPC Mapping</string>
+    <string name="chip_bail_rights">Bail &amp; CrPC/BNSS</string>
+    <string name="chip_notice_drafter">Notice Drafter</string>
+    <string name="chip_contract_audit">Contract Audit</string>
+    <string name="chip_voice_mode">Voice Assistant</string>
+    <string name="listening_prompt">Listening to your legal query...</string>
+    <string name="action_camera">Scan Document</string>
+    <string name="action_gallery">Upload File</string>
+    <string name="action_settings">AI Settings</string>
+    <string name="action_clear_chat">New Consultation</string>
+</resources>
